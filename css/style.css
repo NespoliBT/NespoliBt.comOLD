@@ -1,0 +1,40 @@
+/* style.css */
+
+.main {
+  padding-top: 1%;
+  padding-bottom: 1%;
+  display: grid;
+  grid-template-columns: 1fr 1vw 1fr;
+  height: 98%;
+  width: 100%;
+  overflow: hidden;
+  position: absolute;
+}
+
+.sinistra {
+  display: grid;
+  grid-template-rows: 0.5fr 1fr 1fr;
+  float: left;
+}
+
+.destra {
+  display: grid;
+  float: right;
+  grid-template-rows: 1fr 1fr 1fr;
+}
+
+.cit {
+  height: 100%;
+  text-align: center;
+  font-size: 5vw;
+}
+
+body {
+  background: rgba(0, 224, 255, 0.29);
+  margin: 0;
+}
+
+.io {
+  text-align: center;
+  font-size: 5vw;
+}
