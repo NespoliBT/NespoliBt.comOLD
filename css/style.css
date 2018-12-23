@@ -121,7 +121,6 @@ h2 {
 	border-bottom: 3px solid #E7DB74;
 	margin-block-end: 0;
 	margin-block-start: 0;
-	margin-bottom: 30px;
 	margin-top: 30px;
 
 }
@@ -137,9 +136,7 @@ h2 {
 	display: grid;
 	grid-template-columns: 70% 30%;
 	border-bottom: 3px solid #E7DB74;
-	padding-right: 30px;
-	padding-left: 30px;
-	padding-bottom: 30px;
+	padding: 30px;
 }
 
 .info {
