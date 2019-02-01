@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="../css/style.css">
+    <meta charset="utf-8">
+    <title>NespoliBT.com - Cinema</title>
+    
+  </head>
+<body>
+	<p>
+		&lt;!DOCTYPE html&gt;<br>
+		&lt;html&gt;<br>
+			&lt;head&gt;<br>
+				&lt;title&gt;A Black Mirror Project&lt;/title&gt;<br>
+			&lt;style&gt;<br>
+		
+				body {<br>
+					margin: 0;<br>
+					background: black;<br>
+				}<br>
+		
+				.scelte {<br>
+					top: 85%;<br>
+					display: grid;<br>
+					grid-template-columns: 1fr 1fr;<br>
+					grid-gap: 350px;<br>
+					width: 100%;<br>
+					position: fixed;<br>
+					z-index: 1;<br>
+					text-align: center;<br>
+					background: black;<br>
+				}<br>
+		
+				.opz {<br>
+					transition: .5s;<br>
+					padding: 40px;<br>
+					padding-bottom: 200px;<br>
+					color: #656565;<br>
+					font-family: Arial;<br>
+					font-size: 30px;<br>
+					border-radius: 10%;<br>
+				}<br>
+		
+				.opz:hover {<br>
+					transition: .25s linear;<br>
+					color: white;<br>
+				}<br>
+		
+				video {<br>
+					position: absolute;<br>
+				}<br>
+		
+				sd {<br>
+					transition: .25s linear;<br>
+				}<br>
+		
+		
+		
+				*, *:after, *:before {<br>
+				  box-sizing: border-box;<br>
+				  -moz-box-sizing: border-box;<br>
+				}<br>
+				
+				sd {<br>
+				  position: relative;<br>
+				}<br>
+				
+				.opz &gt; sd:before {<br>
+				  content: "";<br>
+				  position: absolute;<br>
+				  width: 100%;<br>
+				  height: 7px;<br>
+				  bottom: -15px;<br>
+				  left: 0;<br>
+				  background: linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(255,255,255,1) 50%, rgba(255,255,255,1) 51%, rgba(0,0,0,1) 100%);<br>
+				  transform: scaleX(0);<br>
+				  transition: .25s linear;<br>
+				}
+				.opz &gt; sd:hover:before,<br>
+				.opz &gt; sd:focus:before {<br>
+				  transform: scaleX(1);<br>
+				}<br>
+		
+				.barra {<br>
+					top: 85%;<br>
+					left: 0%;<br>
+					position: fixed;<br>
+					background: white;<br>
+					height: 5px;<br>
+					width: 100%;<br>
+					z-index: 2;<br>
+				}<br>
+		
+			&lt;/style&gt;<br>
+		
+			&lt;/head&gt;<br>
+			&lt;body&gt;<br>
+				&lt;div id="scelta" style="display: none"&gt;<br>
+					&lt;div class="barra" id="barra"&gt;<br>
+					&lt;/div&gt;<br>
+					&lt;div class="scelte"&gt;<br>
+						&lt;div class="opz" onclick="scelta1()"&gt;<br>
+							&lt;sd id="scelta1"&gt;GUARDARE UN FILM&lt;/sd&gt;<br>
+						&lt;/div&gt;<br>
+		
+						&lt;div class="opz" onclick="scelta2()"&gt;<br>
+							&lt;sd id="scelta2"&gt;FARE IL PROGETTO&lt;/sd&gt;<br>
+						&lt;/div&gt;<br>
+					&lt;/div&gt;<br>
+				&lt;/div&gt;<br>
+		
+				&lt;video id="myVideo" width="100%" height="100%" controls&gt;<br>
+					&lt;source src="1.mp4" type="video/mp4"&gt;<br>
+				&lt;/video&gt;<br>
+		
+				&lt;script type='text/javascript'&gt;<br>
+		
+					var i = 1;<br>
+				    var seconds = 0;<br>
+				    var secondi = 0;<br>
+				    
+					var cancel = setInterval(counter, 10);<br>
+					var fine = setInterval(contatore, 1000);<br>
+					var comparsa = false;<br>
+		
+				    document.getElementById('myVideo').addEventListener('ended',myHandler,false);<br>
+				    function myHandler(e) {<br>
+				    	if(i != 3 && i != 5 && i != 6 && i != 8) {<br>
+				    		document.getElementById("scelta").style.display = "block";<br>
+				    		
+				    	}<br>
+				    }<br>
+		
+				    var i = 1;<br>
+		
+		
+		
+				    function scelta1(){<br>
+				    	seconds = 0;<br>
+				    	switch(i){<br>
+				    		case 1:<br>
+								//imposta video 2 				guardare un film<br>
+								i = 2;<br>
+								document.getElementById("scelta1").innerHTML = "BLACK MIRROR";<br>
+								document.getElementById("scelta2").innerHTML = "HARRY POTTER";<br>
+								break;<br>
+		
+				    		case 2:
+				    			//imposta video 3				Black Mirror 		Finale<br>
+				    			i = 3;<br>
+				    			break;<br>
+		
+				    		case 7:
+				    			//imposta video 2				guardare un film<br>
+				    			i = 2;<br>
+				    			document.getElementById("scelta1").innerHTML = "BLACK MIRROR";<br>
+				    			document.getElementById("scelta2").innerHTML = "HARRY POTTER";<br>
+				    			break;<br>
+		
+				    		case 4:
+				    			//imposta video 5				Hogwarts			Finale<br>
+				    			i = 5;<br>
+				    			break;<br>
+		
+				    	}<br>
+				    	document.getElementById("scelta").style.display = "none";<br>
+				    	document.getElementById("myVideo").src = i+".mp4";<br>
+				    	document.getElementById("myVideo").play();<br>
+		
+				    }<br>
+		
+				    function scelta2(){<br>
+				    	seconds = 0;<br>
+				    	switch(i){<br>
+		
+				    		case 7:<br>
+				    			//imposta video 8				Uscire 				Finale<br>
+				    			i = 8;<br>
+				    			break;<br>
+		
+				    		case 1:<br>
+				    			//imposta video 7<br>
+				    			i = 7;<br>
+				    			document.getElementById("scelta1").innerHTML = "GUARDARE UN FILM";<br>
+				    			document.getElementById("scelta2").innerHTML = "USCIRE";<br>
+				    			break;<br>
+		
+		
+				    		case 2:<br>
+				    			//imposta video 4<br>
+				    			i = 4;<br>
+				    			document.getElementById("scelta1").innerHTML = "HOGWARTS";<br>
+				    			document.getElementById("scelta2").innerHTML = "SORPRESA";<br>
+				    			break;<br>
+		
+		
+				    		case 4:
+				    			//imposta video 6				Sorpresa 			Finale<br>
+				    			i = 6;<br>
+				    			break;<br>
+		
+				    			
+				    	}<br>
+				    	document.getElementById("scelta").style.display = "none";<br>
+				    	document.getElementById("myVideo").src=i+".mp4";<br>
+				    	document.getElementById("myVideo").play();<br>
+				    }<br>
+		
+		
+		
+					function counter() {<br>
+						console.log(i);<br>
+		
+						if(document.getElementById('myVideo').ended == false && comparsa == false) seconds = 0;<br>
+					    seconds += 1;<br>
+					    document.getElementById("barra").style.width = 100-0.1*seconds+"%";<br>
+					    document.getElementById("barra").style.left = 0.1*seconds/2+"%";<br>
+		
+					    if(comparsa == true) {<br>
+					    	if(document.getElementById('myVideo').ended) {<br>
+								
+					    		switch(i) {<br>
+					    			case 1:<br>
+					    				document.getElementById("scelta2").style.color = "white";<br>
+					    				scelta2();<br>
+					    				document.getElementById("scelta2").style.color = "";<br>
+					    				break;<br>
+			
+					    			case 2:<br>
+										document.getElementById("scelta1").style.color = "white";<br>
+					    				scelta1();<br>
+					    				document.getElementById("scelta1").style.color = "";<br>
+					    				break;<br>
+			
+					    			case 4:<br>
+										document.getElementById("scelta1").style.color = "white";<br>
+					    				scelta1();<br>
+					    				document.getElementById("scelta1").style.color = "";<br>
+					    				break;<br>
+			
+					    			case 7:<br>
+										document.getElementById("scelta2").style.color = "white";<br>
+					    				scelta2();<br>
+					    				document.getElementById("scelta2").style.color = "";<br>
+					    				break;<br>
+		
+					    		}<br>
+					    	}<br>
+					    }<br>
+					}<br>
+		
+					function contatore() {<br>
+		
+						if(document.getElementById('myVideo').currentTime &gt; 23 && i == 1 && document.getElementById('myVideo').currentTime &lt; 24) {<br>
+							document.getElementById("scelta").style.display = "block";<br>
+							comparsa = true;<br>
+							seconds = 0;<br>
+						}
+						if(document.getElementById('myVideo').currentTime &gt; 17 && i == 2 && document.getElementById('myVideo').currentTime &lt; 18) {<br>
+							document.getElementById("scelta").style.display = "block";<br>
+							comparsa = true;<br>
+							seconds = 0;<br>
+						}
+						if(document.getElementById('myVideo').currentTime &gt; 236 && i == 7 && document.getElementById('myVideo').currentTime &lt; 237) {<br>
+							document.getElementById("scelta").style.display = "block";<br>
+							comparsa = true;<br>
+							seconds = 0;<br>
+						}
+						if(document.getElementById('myVideo').currentTime &gt; 48 && i == 4 && document.getElementById('myVideo').currentTime &lt; 49) {<br>
+							document.getElementById("scelta").style.display = "block";<br>
+							comparsa = true;<br>
+							seconds = 0;<br>
+						}<br>
+					}<br>
+		
+				&lt;/script&gt;<br>
+				
+				
+			&lt;/body&gt;<br>
+		&lt;/html&gt;<br>
+	</p>
+</body>
+</html>
+

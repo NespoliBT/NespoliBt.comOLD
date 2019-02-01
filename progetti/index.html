@@ -1,0 +1,273 @@
+
+		<!DOCTYPE html>
+		<html>
+			<head>
+				<title>A Black Mirror Project</title>
+			<style>
+		
+				body {
+					margin: 0;
+					background: black;
+				}
+		
+				.scelte {
+					top: 85%;
+					display: grid;
+					grid-template-columns: 1fr 1fr;
+					grid-gap: 350px;
+					width: 100%;
+					position: fixed;
+					z-index: 1;
+					text-align: center;
+					background: black;
+				}
+		
+				.opz {
+					transition: .5s;
+					padding: 40px;
+					padding-bottom: 200px;
+					color: #656565;
+					font-family: Arial;
+					font-size: 30px;
+					border-radius: 10%;
+				}
+		
+				.opz:hover {
+					transition: .25s linear;
+					color: white;
+				}
+		
+				video {
+					position: absolute;
+				}
+		
+				sd {
+					transition: .25s linear;
+				}
+		
+		
+		
+				*, *:after, *:before {
+				  box-sizing: border-box;
+				  -moz-box-sizing: border-box;
+				}
+				
+				sd {
+				  position: relative;
+				}
+				
+				.opz > sd:before {
+				  content: "";
+				  position: absolute;
+				  width: 100%;
+				  height: 7px;
+				  bottom: -15px;
+				  left: 0;
+				  background: linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(255,255,255,1) 50%, rgba(255,255,255,1) 51%, rgba(0,0,0,1) 100%);
+				  transform: scaleX(0);
+				  transition: .25s linear;
+				}
+				.opz > sd:hover:before,
+				.opz > sd:focus:before {
+				  transform: scaleX(1);
+				}
+		
+				.barra {
+					top: 85%;
+					left: 0%;
+					position: fixed;
+					background: white;
+					height: 5px;
+					width: 100%;
+					z-index: 2;
+				}
+		
+			</style>
+		
+			</head>
+			<body>
+				<div id="scelta" style="display: none">
+					<div class="barra" id="barra">
+					</div>
+					<div class="scelte">
+						<div class="opz" onclick="scelta1()">
+							<sd id="scelta1">GUARDARE UN FILM</sd>
+						</div>
+		
+						<div class="opz" onclick="scelta2()">
+							<sd id="scelta2">FARE IL PROGETTO</sd>
+						</div>
+					</div>
+				</div>
+		
+				<video id="myVideo" width="100%" height="100%" controls>
+					<source src="1.mp4" type="video/mp4">
+				</video>
+		
+				<script type='text/javascript'>
+		
+					var i = 1;
+				    var seconds = 0;
+				    var secondi = 0;
+				    
+					var cancel = setInterval(counter, 10);
+					var fine = setInterval(contatore, 1000);
+					var comparsa = false;
+		
+				    document.getElementById('myVideo').addEventListener('ended',myHandler,false);
+				    function myHandler(e) {
+				    	if(i != 3 && i != 5 && i != 6 && i != 8) {
+				    		document.getElementById("scelta").style.display = "block";
+				    		
+				    	}
+				    }
+		
+				    var i = 1;
+		
+		
+		
+				    function scelta1(){
+				    	seconds = 0;
+				    	switch(i){
+				    		case 1:
+								//imposta video 2 				guardare un film
+								i = 2
+								document.getElementById("scelta1").innerHTML = "BLACK MIRROR";
+								document.getElementById("scelta2").innerHTML = "HARRY POTTER";
+								break;
+		
+				    		case 2:
+				    			//imposta video 3				Black Mirror 		Finale
+				    			i = 3;
+				    			break;
+		
+				    		case 7:
+				    			//imposta video 2				guardare un film
+				    			i = 2;
+				    			document.getElementById("scelta1").innerHTML = "BLACK MIRROR";
+				    			document.getElementById("scelta2").innerHTML = "HARRY POTTER";
+				    			break;
+		
+				    		case 4:
+				    			//imposta video 5				Hogwarts			Finale
+				    			i = 5;
+				    			break;
+		
+				    	}
+				    	document.getElementById("scelta").style.display = "none";
+				    	document.getElementById("myVideo").src = i+".mp4";
+				    	document.getElementById("myVideo").play();
+		
+				    }
+		
+				    function scelta2(){
+				    	seconds = 0;
+				    	switch(i){
+		
+				    		case 7:
+				    			//imposta video 8				Uscire 				Finale
+				    			i = 8;
+				    			break;
+		
+				    		case 1:
+				    			//imposta video 7
+				    			i = 7;
+				    			document.getElementById("scelta1").innerHTML = "GUARDARE UN FILM";
+				    			document.getElementById("scelta2").innerHTML = "USCIRE";
+				    			break;
+		
+		
+				    		case 2:
+				    			//imposta video 4
+				    			i = 4;
+				    			document.getElementById("scelta1").innerHTML = "HOGWARTS";
+				    			document.getElementById("scelta2").innerHTML = "SORPRESA";
+				    			break;
+		
+		
+				    		case 4:
+				    			//imposta video 6				Sorpresa 			Finale
+				    			i = 6;
+				    			break;
+		
+				    			
+				    	}
+				    	document.getElementById("scelta").style.display = "none";
+				    	document.getElementById("myVideo").src=i+".mp4";
+				    	document.getElementById("myVideo").play();
+				    }
+		
+		
+		
+					function counter() {
+						console.log(i);
+		
+						if(document.getElementById('myVideo').ended == false && comparsa == false) seconds = 0;
+					    seconds += 1;
+					    document.getElementById("barra").style.width = 100-0.1*seconds+"%";
+					    document.getElementById("barra").style.left = 0.1*seconds/2+"%";
+		
+					    if(comparsa == true) {
+					    	if(document.getElementById('myVideo').ended) {
+								
+					    		switch(i) {
+					    			case 1:
+					    				document.getElementById("scelta2").style.color = "white";
+					    				scelta2();
+					    				document.getElementById("scelta2").style.color = "";
+					    				break;
+			
+					    			case 2:
+										document.getElementById("scelta1").style.color = "white";
+					    				scelta1();
+					    				document.getElementById("scelta1").style.color = "";
+					    				break;
+			
+					    			case 4:
+										document.getElementById("scelta1").style.color = "white";
+					    				scelta1();
+					    				document.getElementById("scelta1").style.color = "";
+					    				break;
+			
+					    			case 7:
+										document.getElementById("scelta2").style.color = "white";
+					    				scelta2();
+					    				document.getElementById("scelta2").style.color = "";
+					    				break;
+		
+					    		}
+					    	}
+					    }
+					}
+		
+					function contatore() {
+		
+						if(document.getElementById('myVideo').currentTime > 23 && i == 1 && document.getElementById('myVideo').currentTime < 24) {
+							document.getElementById("scelta").style.display = "block";
+							comparsa = true;
+							seconds = 0;
+						}
+						if(document.getElementById('myVideo').currentTime > 17 && i == 2 && document.getElementById('myVideo').currentTime < 18) {
+							document.getElementById("scelta").style.display = "block";
+							comparsa = true;
+							seconds = 0;
+						}
+						if(document.getElementById('myVideo').currentTime > 236 && i == 7 && document.getElementById('myVideo').currentTime < 237) {
+							document.getElementById("scelta").style.display = "block";
+							comparsa = true;
+							seconds = 0;
+						}
+						if(document.getElementById('myVideo').currentTime > 48 && i == 4 && document.getElementById('myVideo').currentTime < 49) {
+							document.getElementById("scelta").style.display = "block";
+							comparsa = true;
+							seconds = 0;
+						}
+					}
+		
+				</script>
+				
+				
+			</body>
+		</html>
+
+
